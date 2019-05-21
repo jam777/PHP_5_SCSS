@@ -1,0 +1,52 @@
+/*la mixin ring pour les anneaux*/
+
+@mixin ring($taille,$color_border){
+	$color_shadow:darken($color_border,($taille/15%));
+	$taille_shadow:$taille/70;
+	border:$taille/15 solid $color_border;
+	height:$taille;
+	width:$taille;
+	border-radius:500px;
+	box-shadow: $taille_shadow $taille_shadow $taille/30 $color_shadow,
+	$taille_shadow $taille_shadow $taille/30 $color_shadow inset;
+	}
+
+/******Les 2 anneaux My precious *******/
+	
+@for $i from 1 through 2{
+	.precious#{$i}{  
+		@include ring(45px,#FF5F01); 
+	}
+}
+
+/*************The one ring *************/
+
+.yellowring{
+	@include ring(200px,#FDCC08);
+}
+
+/*************Find it *************/
+
+
+@for $i from 6 through 1 {
+@if($i == 6){
+.anneau6{
+@include ring(($i*15+20)+0px,black);
+}
+}
+@else{
+.anneau#{$i}{
+
+@include ring(($i*15+20)+0px,black);
+display: flex;
+flex-direction: column;
+justify-content: center;
+margin-left:70%;
+// transform: translateX(80%)
+
+}
+}
+}
+.findIt{
+transform : rotate(180deg );
+}
